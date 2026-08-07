@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Inventory</title>
+</head>
+
+<body>
+
+<h1>Products</h1>
+
+<div id="products"></div>
+
+
+<script>
+
+fetch("http://127.0.0.1:8000/api/product/")
+.then(response => response.json())
+.then(data => {
+
+    let output = "";
+
+    data.forEach(product => {
+
+        output += `
+            <h3>${product.name}</h3>
+            <p>Price: ${product.price}</p>
+            <p>Quantity: ${product.quantity}</p>
+            <hr>
+        `;
+
+    });
+
+
+    document.getElementById("products").innerHTML = output;
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
